@@ -22,6 +22,8 @@ use function Tonik\Theme\App\asset_path;
  */
 function register_stylesheets() {
     wp_enqueue_style('app', asset_path('css/app.css'));
+    wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/resources/assets/sass/bootstrap.min.css');
+    wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/resources/assets/js/bootstrap.min.js', array ( 'jquery' ), null, true);
 }
 add_action('wp_enqueue_scripts', 'Tonik\Theme\App\Http\register_stylesheets');
 
