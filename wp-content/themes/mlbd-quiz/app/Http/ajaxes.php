@@ -14,18 +14,20 @@ namespace Tonik\Theme\App\Http;
 */
 
 /**
- * My AJAX action callback.
+ * Update Questions Answer
  *
- * @return void
  */
-function action_callback()
-{
-    // Validate nonce token.
-    check_ajax_referer('my_action_nonce', 'nonce');
 
-    // Action logic...
-
-    die();
-}
-add_action('wp_ajax_my_action', 'Tonik\Theme\App\Http\action_callback');
-add_action('wp_ajax_nopriv_my_action', 'Tonik\Theme\App\Http\action_callback');
+function update_question_answer(){
+    $postID = $_POST['postID'];
+    $meataID = $_POST['meataID'];
+    $answer = $_POST['answer'];
+    $anynomus = $_POST['anynomus'];
+    $name = $_POST['name'];
+    $username = ((int)$_POST['anynomus'])? $name : 'anynomus';
+    $result = add_post_meta($postID, $meataID . '_ans', $answer . '#' . $username , false );
+    
+    wp_send_json($result);
+  }
+ add_action('wp_ajax_update_question_answer', 'Tonik\Theme\App\Http\update_question_answer');
+ add_action('wp_ajax_nopriv_update_question_answer', 'Tonik\Theme\App\Http\update_question_answer');

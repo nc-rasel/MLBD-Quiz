@@ -10,7 +10,10 @@
     "lint:sass": "stylelint resources/assets/sass/**/*.{scss,sass}",
     "lint": "npm run lint:js && npm run lint:sass"
   },
-  "dependencies": {},
+  "dependencies": {
+    "jquery.cookie": "^1.4.1",
+    "jquery.repeatable": "^0.4.1"
+  },
   "devDependencies": {
     "autoprefixer": "^6.7.7",
     "babel-core": "^6.24.1",
