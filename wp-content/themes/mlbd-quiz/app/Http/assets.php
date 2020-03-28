@@ -32,8 +32,17 @@ add_action('wp_enqueue_scripts', 'Tonik\Theme\App\Http\register_stylesheets');
  */
 function register_scripts() {
     wp_enqueue_script('app', asset_path('js/app.js'), ['jquery'], null, true);
+    wp_localize_script(
+        'app',
+        'vars',
+        array(
+            'ajaxurl' => admin_url('admin-ajax.php'),
+            'template_directory' => get_template_directory_uri(),
+        )
+    );
 }
 add_action('wp_enqueue_scripts', 'Tonik\Theme\App\Http\register_scripts');
+
 
 /**
  * Registers editor stylesheets.
