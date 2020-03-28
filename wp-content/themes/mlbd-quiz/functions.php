@@ -32,3 +32,19 @@ if ($ok) {
     // they must be under the same dir path.
     (new Tonik\Gin\Foundation\Autoloader($theme->get('config')))->register();
 }
+
+// Add class to A element of .primary-menu
+function mlbd_quiz_primary_menu_anchor_class($item_output, $item, $depth, $args) {
+    $item_output = preg_replace('/<a /', '<a class="nav-link" ', $item_output, 1);
+    return $item_output;
+}
+add_filter('walker_nav_menu_start_el', 'mlbd_quiz_primary_menu_anchor_class', 10, 4);
+
+// Add class to LI element of .primary-menu
+function mlbd_quiz_primary_menu_li_class($objects, $args) {
+    foreach($objects as $key => $item) {
+      $objects[$key]->classes[] = 'nav-item';
+    }
+    return $objects;
+}
+add_filter('wp_nav_menu_objects', 'mlbd_quiz_primary_menu_li_class', 10, 2);
