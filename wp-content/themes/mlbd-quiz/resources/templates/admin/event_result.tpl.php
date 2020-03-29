@@ -12,7 +12,7 @@
   <thead >
     <tr>
       <?php for($i = 0; $i < $questions; $i++){  ?>
-        <th><?=  $i . ': ' . get_post_meta($eventID, 'questions_'. $i .'_question', true); ?> ?</th>
+        <th><?=  $i . ': ' . get_post_meta($eventID, 'questions_'. $i .'_question', true); ?> </th>
       <?php  } ?>
     </tr>
   </thead>
