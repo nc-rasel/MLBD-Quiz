@@ -5,12 +5,20 @@ import Cookie from './_cookie';
 const cookie = new Cookie();
 
 $(document).ready(function () {
+  if(cookie.read('username')){
+    $(".welcome-popup-wrapper").remove();
+  }
   $("#welcome-form #submit").on("click", function (e) {
     e.preventDefault();
     var username = $("#welcome-form").find("#user_name").val();
-    cookie.remove('username');
-    cookie.create('username', username, 365);
-    $(".welcome-popup-wrapper").remove();
+    if(username){
+      $('.error-message').hide();
+      cookie.remove('username');
+      cookie.create('username', username, 365);
+      $(".welcome-popup-wrapper").remove();
+    }else{
+      $('.error-message').show();
+    }
   });
   $("#answer_form #submit").on("click", function (e) {
     e.preventDefault();
