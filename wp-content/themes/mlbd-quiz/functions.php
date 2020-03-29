@@ -152,7 +152,11 @@ function wpdocs_register_my_custom_menu_page() {
 add_action( 'admin_menu', 'wpdocs_register_my_custom_menu_page' );
 
 function make_event_result_page(){
-  template('admin/event_result');
+    if( !isset($_GET['post_id'])){
+        template('admin/event_results');
+    }else{
+        template('admin/event_result');
+    }
 }
 
 function create_default_pages(){
