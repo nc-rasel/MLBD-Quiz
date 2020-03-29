@@ -5,6 +5,9 @@ import Cookie from './_cookie';
 const cookie = new Cookie();
 
 $(document).ready(function () {
+  if(cookie.read('username')){
+    $(".welcome-popup-wrapper").remove();
+  }
   $("#welcome-form #submit").on("click", function (e) {
     e.preventDefault();
     var username = $("#welcome-form").find("#user_name").val();
