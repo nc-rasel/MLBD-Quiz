@@ -1,5 +1,5 @@
 <?php 
-if(strtotime(get_post_meta(get_the_ID(), 'expired_date', true)) <= time() ){
+if(strtotime(get_post_meta(get_the_ID(), 'expired_date', true)) <= current_time('timestamp') ){
   wp_redirect( home_url('link-expired') );
   exit();
 }
