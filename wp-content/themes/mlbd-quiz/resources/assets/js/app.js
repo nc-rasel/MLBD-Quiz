@@ -32,7 +32,7 @@ $(document).ready(function () {
         // Captcha Test ajax call
         $.post(vars.ajaxurl, dataVariables).then(response => {
           if(response){
-            console.log(response);
+            window.location.href= vars.home_url + '/thank-you';
           }
         })
       });

@@ -40,6 +40,8 @@ function register_scripts() {
         array(
             'ajaxurl' => admin_url('admin-ajax.php'),
             'template_directory' => get_template_directory_uri(),
+            'home_url' => home_url(),
+            'loggedIn' => is_user_logged_in(),
         )
     );
 }
