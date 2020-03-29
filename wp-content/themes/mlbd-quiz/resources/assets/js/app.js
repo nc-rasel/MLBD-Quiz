@@ -3,7 +3,6 @@
 import $ from 'jquery'
 import Cookie from './_cookie';
 const cookie = new Cookie();
-
 $(document).ready(function () {
   if (cookie.read('username')) {
     $(".welcome-popup-wrapper").remove();
@@ -14,7 +13,7 @@ $(document).ready(function () {
     if (username) {
       $('.error-message').hide();
       cookie.remove('username');
-      cookie.create('username', username, 365);
+      cookie.create('username', username, 1);
       $(".welcome-popup-wrapper").remove();
     } else {
       $('.error-message').show();
@@ -30,11 +29,10 @@ $(document).ready(function () {
       $(value).find(".answer_wrapper").each(function (id, data) {
         var answer = $.trim($(data).find("textarea").val());
         if (!answer.trim()) { valid = 0; 
-          $(data).append('<div class="error-message" style="display:block">Answer field is required</div>');
+          $(data).find('.error-message').show();
         }
       });
     });
-    console.log(valid);
     if (valid == 1) {
       $(form).find(".form-group").each(function (index, value) {
         let metaID = $(value).data("id");
@@ -57,16 +55,17 @@ $(document).ready(function () {
           })
         });
       });
-
     }
   });
-
+  
   $("body").on("click", ".add_answer", function (e) {
     e.preventDefault();
     var thisEvent = this;
     addAnswer(thisEvent);
   });
-
+  $("body").on("keyup",'.answer_wrapper', function (e) {
+    $(this).closest(".answer_wrapper").find('.error-message').hide();
+  });
   function addAnswer(thisEvent) {
     var answer = $(thisEvent).closest('.form-group').find(".answer_wrapper");
     var thisNumber = $(answer).data("no");
