@@ -25,7 +25,7 @@ get_header(); ?>
                 <h4 class="h4"><label for="questions_<?= $i; ?>_question_ans"><?= get_post_meta(get_the_ID(), 'questions_'. $i .'_question', true); ?></label></h4>
                 <div class="multiple-answer-area">
                   <div class="questions_<?= $i; ?>_question_ans_wap answer_wrapper">
-                    <textarea name="ans" cols="30" rows="10" class="form-control" required></textarea>
+                    <textarea name="ans" cols="30" rows="10" class="form-control required" required></textarea>
                     <input type="checkbox" class="form-check-input" id="anynomus" name="anynomus" value="Show answer as anynomus">
                     <label class="form-check-label">I would like to feedback anonymously</label>
                   </div>
@@ -59,7 +59,8 @@ endif;
           <div class="input-group-prepend">
           <label class="input-group-text" for="user_name" id="addon-wrapping">Your Name</label>
           </div>
-          <input type="text" name="user_name" id="user_name" class="form-control" placeholder="Your Name" aria-label="Username" aria-describedby="addon-wrapping">
+          <input type="text" name="user_name" id="user_name" class="form-control required" placeholder="Your Name" aria-label="Username" aria-describedby="addon-wrapping" required>
+          <div class="error-message">Name field is required</div>
       </div>
       <br />
       <button type="submit" class="btn btn-primary mb-2" id="submit">Confirm identity</button>

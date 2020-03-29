@@ -33,7 +33,9 @@
   min-width: 200px;
   text-transform: uppercase;
 }
-.thankyou-title, .expire-title{
+.error-message{
+  display: none;
+}.thankyou-title, .expire-title{
   text-align: center;
   font-size: 32px;
   text-transform: uppercase;
