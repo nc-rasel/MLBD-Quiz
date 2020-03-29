@@ -1,8 +1,12 @@
-<?php get_header(); ?>
+<?php 
+if(strtotime(get_post_meta(get_the_ID(), 'expired_date', true)) <= time() ){
+  wp_redirect( home_url('link-expired') );
+  exit();
+}
+get_header(); ?>
 <?php 
   if(have_posts()):
     while(have_posts()): the_post(); 
-
 ?>
 <div class="single-wrap">
   <div class="container">
@@ -21,7 +25,7 @@
                 <h4 class="h4"><label for="questions_<?= $i; ?>_question_ans"><?= get_post_meta(get_the_ID(), 'questions_'. $i .'_question', true); ?></label></h4>
                 <div class="multiple-answer-area">
                   <div class="questions_<?= $i; ?>_question_ans_wap answer_wrapper">
-                    <textarea name="ans" cols="30" rows="10" class="form-control"></textarea>
+                    <textarea name="ans" cols="30" rows="10" class="form-control" required></textarea>
                     <input type="checkbox" class="form-check-input" id="anynomus" name="anynomus" value="Show answer as anynomus">
                     <label class="form-check-label">I would like to feedback anonymously</label>
                   </div>
@@ -44,4 +48,23 @@
 endif;
 
 ?>
+<div class="welcome-popup-wrapper">
+  <div class="welcome-popup">
+    <div class="welcome-popup-inner">
+      <div class="jumbotron">
+        <h1 class="display-4 text-center">WELCOME</h1>
+      </div>
+      <form action="" method="POST" id="welcome-form">
+      <div class="input-group flex-nowrap">
+          <div class="input-group-prepend">
+          <label class="input-group-text" for="user_name" id="addon-wrapping">Your Name</label>
+          </div>
+          <input type="text" name="user_name" id="user_name" class="form-control" placeholder="Your Name" aria-label="Username" aria-describedby="addon-wrapping">
+      </div>
+      <br />
+      <button type="submit" class="btn btn-primary mb-2" id="submit">Confirm identity</button>
+      </form>
+    </div>
+  </div>
+</div>
 <?php get_footer(); ?>

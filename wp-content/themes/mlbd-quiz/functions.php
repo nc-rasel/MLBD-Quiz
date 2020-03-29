@@ -52,70 +52,87 @@ add_filter('wp_nav_menu_objects', 'mlbd_quiz_primary_menu_li_class', 10, 2);
 if( function_exists('acf_add_local_field_group') ):
 
     acf_add_local_field_group(array(
-      'key' => 'group_5e7e4297121ff',
-      'title' => 'Event Question Set',
-      'fields' => array(
-          array(
-              'key' => 'field_5e7e42a2b633f',
-              'label' => 'Questions',
-              'name' => 'questions',
-              'type' => 'repeater',
-              'instructions' => '',
-              'required' => 0,
-              'conditional_logic' => 0,
-              'wrapper' => array(
-                  'width' => '',
-                  'class' => '',
-                  'id' => '',
-              ),
-              'collapsed' => '',
-              'min' => 0,
-              'max' => 0,
-              'layout' => 'table',
-              'button_label' => '',
-              'sub_fields' => array(
-                  array(
-                      'key' => 'field_5e7e430ab6340',
-                      'label' => 'Question',
-                      'name' => 'question',
-                      'type' => 'text',
-                      'instructions' => '',
-                      'required' => 0,
-                      'conditional_logic' => 0,
-                      'wrapper' => array(
-                          'width' => '100',
-                          'class' => '',
-                          'id' => '',
-                      ),
-                      'default_value' => '',
-                      'placeholder' => 'Enter your question',
-                      'prepend' => '',
-                      'append' => '?',
-                      'maxlength' => '',
-                  ),
-              ),
-          ),
-      ),
-      'location' => array(
-          array(
-              array(
-                  'param' => 'post_type',
-                  'operator' => '==',
-                  'value' => 'event',
-              ),
-          ),
-      ),
-      'menu_order' => 0,
-      'position' => 'normal',
-      'style' => 'default',
-      'label_placement' => 'top',
-      'instruction_placement' => 'label',
-      'hide_on_screen' => '',
-      'active' => true,
-      'description' => '',
+        'key' => 'group_5e7e4297121ff',
+        'title' => 'Event Settings',
+        'fields' => array(
+            array(
+                'key' => 'field_5e7e42a2b633f',
+                'label' => 'Questions',
+                'name' => 'questions',
+                'type' => 'repeater',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'collapsed' => '',
+                'min' => 0,
+                'max' => 0,
+                'layout' => 'table',
+                'button_label' => '',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_5e7e430ab6340',
+                        'label' => 'Question',
+                        'name' => 'question',
+                        'type' => 'text',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array(
+                            'width' => '100',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'default_value' => '',
+                        'placeholder' => 'Enter your question',
+                        'prepend' => '',
+                        'append' => '?',
+                        'maxlength' => '',
+                    ),
+                ),
+            ),
+            array(
+                'key' => 'field_5e80aa8049742',
+                'label' => 'Expired date',
+                'name' => 'expired_date',
+                'type' => 'date_time_picker',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'display_format' => 'd/m/Y g:i a',
+                'return_format' => 'd/m/Y g:i a',
+                'first_day' => 6,
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'event',
+                ),
+            ),
+        ),
+        'menu_order' => 0,
+        'position' => 'normal',
+        'style' => 'default',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'hide_on_screen' => '',
+        'active' => true,
+        'description' => '',
     ));
     
-  endif;
+    endif;
 
 /**
  * Register a Event Result page.
@@ -136,4 +153,67 @@ add_action( 'admin_menu', 'wpdocs_register_my_custom_menu_page' );
 
 function make_event_result_page(){
   template('admin/event_result');
+}
+
+function create_default_pages(){
+    if( ! post_exists_by_name('thank-you', 'page')){
+        $new_page = array(
+            'slug' => 'thank-you',
+            'title' => 'Thank You',
+            'content' => "<h3 class='th-content'>Thank You For your feedback",
+        );
+        $new_page_id = wp_insert_post( array(
+            'post_title' => $new_page['title'],
+            'post_type'     => 'page',
+            'post_name'  => $new_page['slug'],
+            'comment_status' => 'closed',
+            'ping_status' => 'closed',
+            'post_content' => $new_page['content'],
+            'post_status' => 'publish',
+            'post_author' => 1,
+            'menu_order' => 0,
+            'page_template'  => 'page-thankyou-template.php'
+        ));
+    }
+    if( ! post_exists_by_name('link-expired', 'page')){
+        $new_page = array(
+            'slug' => 'link-expired',
+            'title' => 'Link Expired',
+            'content' => "<h3 class='th-content'>Thank you for coming here but this link has expired",
+        );
+        $new_page_id = wp_insert_post( array(
+            'post_title' => $new_page['title'],
+            'post_type'     => 'page',
+            'post_name'  => $new_page['slug'],
+            'comment_status' => 'closed',
+            'ping_status' => 'closed',
+            'post_content' => $new_page['content'],
+            'post_status' => 'publish',
+            'post_author' => 1,
+            'menu_order' => 0,
+            'page_template'  => 'page-expired-event-template.php'
+        ));
+    }
+}
+add_action( 'after_setup_theme', 'create_default_pages' );
+
+function post_exists_by_name( $post_name, $post_type='post' ) {
+	global $wpdb;
+
+	$query = "SELECT ID FROM $wpdb->posts WHERE 1=1";
+	$args = array();
+
+	if ( !empty ( $post_name ) ) {
+	     $query .= " AND post_name LIKE '%s' ";
+	     $args[] = $post_name;
+	}
+	if ( !empty ( $post_type ) ) {
+	     $query .= " AND post_type = '%s' ";
+	     $args[] = $post_type;
+	}
+
+	if ( !empty ( $args ) )
+	     return $wpdb->get_var( $wpdb->prepare($query, $args) );
+
+	return 0;
 }
