@@ -9,6 +9,10 @@ table.result-event-table {
   thead{
     th {
       border: 1px solid #000;
+      padding: 10px 12px;
     }
   } 
+}
+.result-event-table tr td div{
+  border-bottom: 1px solid #ddd;
 }
