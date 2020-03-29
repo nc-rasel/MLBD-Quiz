@@ -70,3 +70,16 @@ function move_jquery_to_the_footer($wp_scripts) {
     }
 }
 add_action('wp_default_scripts', 'Tonik\Theme\App\Http\move_jquery_to_the_footer');
+
+
+
+/**
+ * Registers Admin stylesheet files.
+ *
+ * @return void
+ */
+function admin_enqueues() {
+  wp_register_style( 'custom_admin_css',asset_path('css/admin.css') );
+  wp_enqueue_style( 'custom_admin_css');
+}
+add_action( 'admin_enqueue_scripts', 'Tonik\Theme\App\Http\admin_enqueues' );
