@@ -160,7 +160,7 @@ function create_default_pages(){
         $new_page = array(
             'slug' => 'thank-you',
             'title' => 'Thank You',
-            'content' => "<h3 class='th-content'>Thank You For your feedback",
+            'content' => "<h3 class='th-content thankyou-title'>Thank You For your feedback</h3>",
         );
         $new_page_id = wp_insert_post( array(
             'post_title' => $new_page['title'],
@@ -179,7 +179,7 @@ function create_default_pages(){
         $new_page = array(
             'slug' => 'link-expired',
             'title' => 'Link Expired',
-            'content' => "<h3 class='th-content'>Thank you for coming here but this link has expired",
+            'content' => "<h3 class='th-content expire-title'>Thank you for coming here but this link has expired</h3>",
         );
         $new_page_id = wp_insert_post( array(
             'post_title' => $new_page['title'],
