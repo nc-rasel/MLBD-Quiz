@@ -28,6 +28,7 @@ get_header(); ?>
                     <textarea name="ans" cols="30" rows="10" class="form-control required" required></textarea>
                     <input type="checkbox" class="form-check-input" id="anynomus" name="anynomus" value="Show answer as anynomus">
                     <label class="form-check-label">I would like to feedback anonymously</label>
+                    <div class="error-message" style="color: red" >Answer field is required</div>
                   </div>
                 </div>
                 <button class="add_answer btn btn-info mb-2">Add Feedback</button><br /><br /><br />
@@ -52,18 +53,18 @@ endif;
   <div class="welcome-popup">
     <div class="welcome-popup-inner">
       <div class="jumbotron">
-        <h1 class="display-4 text-center">WELCOME</h1>
+        <h1 class="display-4 text-center">Welcome to <strong><?= get_the_title(); ?></strong> </h1>
       </div>
       <form action="" method="POST" id="welcome-form">
       <div class="input-group flex-nowrap">
           <div class="input-group-prepend">
           <label class="input-group-text" for="user_name" id="addon-wrapping">Your Name</label>
           </div>
-          <input type="text" name="user_name" id="user_name" class="form-control required" placeholder="Your Name" aria-label="Username" aria-describedby="addon-wrapping" required>
-          <div class="error-message">Name field is required</div>
+          <input type="text" name="user_name" id="user_name" class="form-control required" placeholder="Type your name here..." aria-label="Username" aria-describedby="addon-wrapping" required>
+          <div class="error-message" style="color: red">Name field is required</div>
       </div>
       <br />
-      <button type="submit" class="btn btn-primary mb-2" id="submit">Confirm identity</button>
+      <button type="submit" class="btn btn-primary mb-2 w-100" id="submit">Go Next →</button>
       </form>
     </div>
   </div>
