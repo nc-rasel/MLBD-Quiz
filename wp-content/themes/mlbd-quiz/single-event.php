@@ -23,13 +23,13 @@
                   <div class="questions_<?= $i; ?>_question_ans_wap answer_wrapper">
                     <textarea name="ans" cols="30" rows="10" class="form-control"></textarea>
                     <input type="checkbox" class="form-check-input" id="anynomus" name="anynomus" value="Show answer as anynomus">
-                    <label class="form-check-label">I would like to answer this anonymously</label>
+                    <label class="form-check-label">I would like to feedback anonymously</label>
                   </div>
                 </div>
-                <button class="add_answer btn btn-info mb-2">Add Answer</button><br /><br /><br />
+                <button class="add_answer btn btn-info mb-2">Add Feedback</button><br /><br /><br />
               </div>
           <?php  } ?>
-          <input type="submit" class="btn btn-success p-2 submit-button" name="submit" id="submit" value="submit">
+          <input type="submit" class="btn btn-success p-2 submit-button w-100" name="submit" id="submit" value="submit">
         </form>
 
       </section>
