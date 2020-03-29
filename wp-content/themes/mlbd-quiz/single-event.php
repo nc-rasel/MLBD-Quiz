@@ -7,14 +7,10 @@
 <article class="article-<?= get_the_ID();?>" data-post-id="<?= get_the_ID(); ?>">
 <h3 class="header_title"><?= get_the_title(); ?></h3>
 <?php the_content(); ?>
-<?php 
-$questions = (int)get_post_meta(get_the_ID(), 'questions', true);
-?>
+<?php $questions = (int)get_post_meta(get_the_ID(), 'questions', true);?>
 <section class="answers">
   <form action="" method="POST" id="answer_form">
-    <?php
-      for($i = 0; $i < $questions; $i++){
-        ?>
+    <?php for($i = 0; $i < $questions; $i++){  ?>
         <div class="form-group " data-id="questions_<?= $i; ?>_question">
           <label for="questions_<?= $i; ?>_question_ans"><?= get_post_meta(get_the_ID(), 'questions_'. $i .'_question', true); ?></label>
           <div class="multiple-answer-area">
@@ -25,10 +21,7 @@ $questions = (int)get_post_meta(get_the_ID(), 'questions', true);
           </div>
           <button class="add_answer">Add Answer</button>
         </div>
-        <?php
-      }
-
-    ?>
+    <?php  } ?>
     <input type="submit" name="submit" id="submit" value="submit">
   </form>
 
