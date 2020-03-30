@@ -1,3 +1,18 @@
+body {
+  background-color: #ecf7f6 !important;
+}
+.company-logo {
+  text-align: center;
+  &.with-guide {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.brand-logo.left {
+  margin: 0 0 40px;
+  display: inline-block;
+  
+}
 .welcome-popup-wrapper {
   width: 100vw;
   height: 100vh;
@@ -41,4 +56,18 @@
   font-size: 32px;
   text-transform: inherit;
   margin-top: 50px;
+}
+.answers {
+  box-shadow: 0 17px 50px 0 rgba(0,0,0,0.19),0 12px 15px 0 rgba(0,0,0,0.24);
+  padding: 24px;
+  border-radius: 10px;
+  background: #fff;
+}
+.btn-success {
+  border-color: #0f7566 !important;
+  background: #15a28e !important;
+  transition: background 300ms;
+  &:hover {
+    background: #107e6e !important;
+  }
 }

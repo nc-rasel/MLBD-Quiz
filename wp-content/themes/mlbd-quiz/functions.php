@@ -99,7 +99,7 @@ if( function_exists('acf_add_local_field_group') ):
                         'name' => 'description',
                         'type' => 'textarea',
                         'instructions' => '',
-                        'required' => 1,
+                        'required' => 0,
                         'conditional_logic' => 0,
                         'wrapper' => array(
                             'width' => '',
