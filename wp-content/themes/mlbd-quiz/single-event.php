@@ -23,6 +23,7 @@ get_header(); ?>
           <?php for($i = 0; $i < $questions; $i++){  ?>
               <div class="form-group " data-id="questions_<?= $i; ?>_question">
                 <h4 class="h4"><label for="questions_<?= $i; ?>_question_ans"><?= get_post_meta(get_the_ID(), 'questions_'. $i .'_question', true); ?></label></h4>
+                <div class="description"><?= get_post_meta(get_the_ID(), 'questions_'. $i .'_description', true); ?></div>
                 <div class="multiple-answer-area">
                   <div class="questions_<?= $i; ?>_question_ans_wap answer_wrapper">
                     <textarea name="ans" cols="30" rows="10" class="form-control required" required></textarea>
