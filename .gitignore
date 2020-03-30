@@ -93,3 +93,5 @@ wp-content/uploads/
 !/wp-content/themes/mlbd-quiz/
 !/wp-content/plugins/advanced-custom-fields/
 !/wp-content/plugins/advanced-custom-fields-pro/
+package-lock.json
+yarn.lock 
